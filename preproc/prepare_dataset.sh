@@ -37,10 +37,10 @@ rm -rf /data/dlrm/criteo_parquet
 rm -rf /data/dlrm/binary_dataset
 
 
-download_dir=${download_dir:-'/data/dlrm/criteo'}
+download_dir=${download_dir:-'/SCRATCH/data'}
 ./verify_criteo_downloaded.sh ${download_dir}
 
-output_path=${output_path:-'/data/dlrm/output'}
+output_path=${output_path:-'/SCRATCH/data'}
 
 
 if [ "$3" = "NVTabular" ]; then
@@ -60,8 +60,8 @@ else
     preprocessing_version=Spark
 fi
 
-conversion_intermediate_dir=${conversion_intermediate_dir:-'/data/dlrm/intermediate_binary'}
-final_output_dir=${final_output_dir:-'/data/dlrm/binary_dataset'}
+conversion_intermediate_dir=${conversion_intermediate_dir:-'/SCRATCH/data/binary'}
+final_output_dir=${final_output_dir:-'/SCRATCH/data/ctr'}
 
 source ${DGX_VERSION}_config.sh
 

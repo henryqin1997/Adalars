@@ -8,6 +8,11 @@ singularity pull docker://springtonyzhao/nvidia_dlrm_pyt:1.2.3
 
 Use Sbatch to submit
 
+```bash
+cd $SCRATCH
+sbatch trainJob
+```
+
 trainJob:
 
 ```

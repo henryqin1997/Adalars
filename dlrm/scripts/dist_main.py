@@ -47,7 +47,7 @@ FLAGS.set_default("decay_power", 2)
 FLAGS.set_default("decay_end_lr", 0)
 FLAGS.set_default("embedding_type", "joint_sparse")
 
-flags.DEFINE_string("master_addr", None, "master address"
+flags.DEFINE_string("master_addr", None, "master address")
 flags.DEFINE_integer("master_port", None, "master_port")
 
 flags.DEFINE_string("backend", "nccl", "Backend to use for distributed training. Default nccl")

@@ -22,6 +22,7 @@ from time import time
 import dllogger
 import numpy as np
 import torch
+import os
 from absl import app, flags, logging
 from apex import amp, parallel, optimizers as apex_optim
 

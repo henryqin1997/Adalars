@@ -46,6 +46,7 @@ FLAGS.set_default("decay_start_step", 16000)
 FLAGS.set_default("decay_power", 2)
 FLAGS.set_default("decay_end_lr", 0)
 FLAGS.set_default("embedding_type", "joint_sparse")
+FLAGS.set_default("master-port",12345)
 
 flags.DEFINE_string("backend", "nccl", "Backend to use for distributed training. Default nccl")
 flags.DEFINE_boolean("bottom_features_ordered", False, "Sort features from the bottom model, useful when using saved "
@@ -55,6 +56,9 @@ flags.DEFINE_boolean("bottom_features_ordered", False, "Sort features from the b
 def main(argv):
     torch.manual_seed(FLAGS.seed)
 
+    if FLAGS.master_addr:
+      os.environ["MASTER_ADDR"] = FLAGS.master_addr
+    
     utils.init_logging(log_path=FLAGS.log_path)
 
     use_gpu = "cpu" not in FLAGS.base_device.lower()

@@ -104,7 +104,7 @@ flags.DEFINE_integer("inference_benchmark_steps", 200,
 
 # Miscellaneous
 flags.DEFINE_float("auc_threshold", None, "Stop the training after achieving this AUC")
-flags.DEFINE_boolean("optimized_mlp", True, "Use an optimized implementation of MLP from apex")
+flags.DEFINE_boolean("optimized_mlp", False, "Use an optimized implementation of MLP from apex")
 flags.DEFINE_enum("auc_device", default="GPU", enum_values=['GPU', 'CPU'],
                   help="Specifies where ROC AUC metric is calculated")
 

@@ -55,7 +55,7 @@ class sparseAdaLARS(Optimizer):
 
         super(sparseAdaLARS, self).__init__(params, defaults)
 
-    '''@torch.no_grad()'''
+    @torch.no_grad()
     def step(self, closure: OptLossClosure = None) -> OptFloat:
         r"""Performs a single optimization step.
         Arguments:
@@ -133,9 +133,9 @@ class sparseAdaLARS(Optimizer):
                     state['trust_ratio'] = trust_ratio
 
                     # Use step size
-                    if state['step'] > 50:
-                       step_size = group['lr'] * trust_ratio
-                       p.add_(make_sparse(-adagrad_step * step_size))
+                    #if state['step'] > 50:
+                    step_size = group['lr'] * trust_ratio
+                    p.add_(make_sparse(-adagrad_step * step_size))
 
 
                 #when gradients are dense
@@ -202,7 +202,6 @@ class sparseAdaLARS(Optimizer):
                     state['adagrad_norm'] = adagrad_norm
                     state['trust_ratio'] = trust_ratio
 
-                    if state['step'] > 5:
-                        p.data.add_(adagrad_step, alpha=-step_size)
+                    p.data.add_(adagrad_step, alpha=-step_size)
 
         return loss

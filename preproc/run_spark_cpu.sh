@@ -37,7 +37,7 @@ export SPARK_LOCAL_DIRS='/data/dlrm/spark/tmp'
 
 # below numbers should be adjusted according to the resource of your running environment
 # set the total number of CPU cores, spark can use
-export TOTAL_CORES=80
+export TOTAL_CORES=40
 
 # set the number of executors
 export NUM_EXECUTORS=8
@@ -46,7 +46,7 @@ export NUM_EXECUTORS=8
 export NUM_EXECUTOR_CORES=$((${TOTAL_CORES}/${NUM_EXECUTORS}))
 
 # unit: GB,  set the max memory you want to use
-export TOTAL_MEMORY=800
+export TOTAL_MEMORY=80
 
 # unit: GB, set the memory for driver
 export DRIVER_MEMORY=32
@@ -56,7 +56,7 @@ export EXECUTOR_MEMORY=$(((${TOTAL_MEMORY}-${DRIVER_MEMORY})/${NUM_EXECUTORS}))
 
 OPTS="--frequency_limit $FREQUENCY_LIMIT"
 
-export SPARK_HOME=/opt/spark
+export SPARK_HOME=/opt/spark-3.0.0-bin-hadoop3.2
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
 

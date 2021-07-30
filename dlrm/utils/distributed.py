@@ -70,8 +70,11 @@ def get_local_rank():
 def is_main_process():
     return get_rank() == 0
 
-
 def init_distributed_mode(backend="nccl", use_gpu=True):
+    if 'PMI_RANK' in os.environ and 'PMI_SIZE' in os.environ and 'MPI_LOCALRANKID' in os.environ:
+        os.environ["RANK"] = os.environ["PMI_RANK"]
+        os.environ["WORLD_SIZE"] = os.environ["PMI_SIZE"]
+        os.environ["LOCAL_RANK"] = os.environ["MPI_LOCALRANKID"]
     if 'RANK' in os.environ and 'WORLD_SIZE' in os.environ:
         rank = int(os.environ["RANK"])
         world_size = int(os.environ['WORLD_SIZE'])

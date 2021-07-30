@@ -1,0 +1,9 @@
+# ninja log v5
+0	21452	1627566853000000000	/scratch1/07519/ziheng/Adalars/build/temp.linux-x86_64-3.6/scratch1/07519/ziheng/Adalars/dlrm/cuda_src/pytorch_embedding_ops.o	ca514c8ea51ff493
+1	65640	1627566897000000000	/scratch1/07519/ziheng/Adalars/build/temp.linux-x86_64-3.6/scratch1/07519/ziheng/Adalars/dlrm/cuda_src/gather_gpu_fused_pytorch_impl.o	ae16024115f84bf3
+0	19534	1627566931000000000	/scratch1/07519/ziheng/Adalars/build/temp.linux-x86_64-3.6/scratch1/07519/ziheng/Adalars/dlrm/cuda_src/dot_based_interact_volta/pytorch_ops.o	8f42c0afa1432dfb
+0	43087	1627566955000000000	/scratch1/07519/ziheng/Adalars/build/temp.linux-x86_64-3.6/scratch1/07519/ziheng/Adalars/dlrm/cuda_src/dot_based_interact_volta/dot_based_interact_pytorch_types.o	9d2b514884e4facc
+0	20274	1627566975000000000	/scratch1/07519/ziheng/Adalars/build/temp.linux-x86_64-3.6/scratch1/07519/ziheng/Adalars/dlrm/cuda_src/dot_based_interact_ampere/pytorch_ops.o	cf61b461f32fff85
+0	44537	1627567000000000000	/scratch1/07519/ziheng/Adalars/build/temp.linux-x86_64-3.6/scratch1/07519/ziheng/Adalars/dlrm/cuda_src/dot_based_interact_ampere/dot_based_interact_pytorch_types.o	c365699d89ab240f
+0	19680	1627567020000000000	/scratch1/07519/ziheng/Adalars/build/temp.linux-x86_64-3.6/scratch1/07519/ziheng/Adalars/dlrm/cuda_src/sparse_gather/sparse_pytorch_ops.o	9514bd725d4fd7e1
+1	63359	1627567064000000000	/scratch1/07519/ziheng/Adalars/build/temp.linux-x86_64-3.6/scratch1/07519/ziheng/Adalars/dlrm/cuda_src/sparse_gather/gather_gpu.o	388a0b227b12d945

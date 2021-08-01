@@ -16,7 +16,7 @@ sbatch trainJob
 trainJob:
 
 ```
-export CNUM=12 # use how many cards
+export CNUM=16 # use how many cards
 export MHOST=`scontrol show hostname`
 MHOST=($MHOST)
 

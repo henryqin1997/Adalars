@@ -16,11 +16,13 @@ sbatch trainJob
 trainJob:
 
 ```
-export CNUM=8 # use how many cards
+export CNUM=12 # use how many cards
 export MHOST=`scontrol show hostname`
+MHOST=($MHOST)
+
 scontrol show hostname > hostfile
 echo "
-mpirun -n $CNUM -ppn 2 -f hostfile singularity exec --bind /opt/apps:/opt/apps,/scratch1/07519/ziheng/Adalars:/workspace/dlrm,/scratch1/07519/ziheng/data_out:/data --nv /scratch1/07519/ziheng/nvidia_dlrm_pyt_1.2.3.sif python3 -m dlrm.scripts.dist_main --master_addr='`echo ${MHOST%c*}`' --master_port 12345 --mode train --dataset /data/dlrm/binary_dataset/split --seed 0 --epochs 1 --amp --log_path /scratch1/07519/ziheng/python_log/log.json " > command.sh
+mpirun -n $CNUM -ppn 3 -f hostfile singularity exec --bind /opt/apps:/opt/apps,/scratch1/07519/ziheng/Adalars:/workspace/dlrm,/scratch1/07519/ziheng/data_out:/data --nv /scratch1/07519/ziheng/nvidia_dlrm_pyt_1.2.3.sif python3 -m dlrm.scripts.dist_main --master_addr='`echo ${MHOST[0]}`' --master_port 12345 --mode train --dataset /data/dlrm/binary_dataset/split --seed 0 --epochs 1 --amp --log_path /scratch1/07519/ziheng/python_log/log.json " > command.sh
 
 bash command.sh
 ```

@@ -133,7 +133,7 @@ class sparseAdaLARS(Optimizer):
                     state['trust_ratio'] = trust_ratio
 
                     # Use step size
-                    #if state['step'] > 50:
+                    #if state['step'] > 50:(enable the tricks in RAdam)
                     step_size = group['lr'] * trust_ratio
                     p.add_(make_sparse(-adagrad_step * step_size))
 
@@ -203,5 +203,6 @@ class sparseAdaLARS(Optimizer):
                     state['trust_ratio'] = trust_ratio
 
                     p.data.add_(adagrad_step, alpha=-step_size)
+                    #p.data.add_(adagrad_step, alpha=-step_size*trust_ratio) enable LARS for MLP.
 
         return loss

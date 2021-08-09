@@ -133,6 +133,10 @@ def main(argv):
         {'params': model.bottom_model.mlp.parameters(), 'lr': scaled_lrs[0]},
         {'params': model.top_model.parameters(), 'lr': scaled_lrs[1]}]
     )
+    '''mlp_optimizer = torch.optim.Adam([
+        {'params': model.bottom_model.mlp.parameters(), 'lr': scaled_lrs[0], 'betas': (0.9,0.999)},
+        {'params': model.top_model.parameters(), 'lr': scaled_lrs[1], 'betas': (0.9,0.999)}]
+    )'''
 
 
 

@@ -37,11 +37,11 @@ from dlrm.utils.distributed import get_gpu_batch_sizes, get_device_mapping, is_m
 from dlrm.optimizer.adalars import sparseAdaLARS
 
 # Training schedule flags
-FLAGS.set_default("batch_size", 1048576)
+FLAGS.set_default("batch_size", 1048576) 
 FLAGS.set_default("test_batch_size", 1048576)
-FLAGS.set_default("lr", 190.0)
+FLAGS.set_default("lr", 190.0) (#batchsize为1024k时，仅仅在embedding使用adalars，学习率设置为220时，会爆掉)
 FLAGS.set_default("warmup_factor", 0)
-FLAGS.set_default("warmup_steps", 1000)
+FLAGS.set_default("warmup_steps", 1000)(#这个随缘调，最好warmup在总step的四分之一-二分之一）
 FLAGS.set_default("decay_steps", 2000)
 FLAGS.set_default("decay_start_step", 4000)
 FLAGS.set_default("decay_power", 2)

@@ -133,9 +133,10 @@ class sparseAdaLARS(Optimizer):
                     state['trust_ratio'] = trust_ratio
 
                     # Use step size
-                    #if state['step'] > 50:(enable the tricks in RAdam)
-                    step_size = group['lr'] * trust_ratio
-                    p.add_(make_sparse(-adagrad_step * step_size))
+                    if state['step'] > 50:
+                    #enable the tricks in RAdam
+                        step_size = group['lr'] * trust_ratio
+                        p.add_(make_sparse(-adagrad_step * step_size))
 
 
                 #when gradients are dense

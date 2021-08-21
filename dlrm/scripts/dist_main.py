@@ -126,12 +126,12 @@ def main(argv):
 
     base_optimizer = sparseAdaLARS
 
-#     embedding_optimizer = sparseAdaLARS([
-#         {'params': model.bottom_model.embeddings.parameters(), 'lr':scaled_lrs[0]}]
-#     )
-    embedding_optimizer = torch.optim.Adagrad([
+    embedding_optimizer = sparseAdaLARS([
         {'params': model.bottom_model.embeddings.parameters(), 'lr':scaled_lrs[0]}]
     )
+#     embedding_optimizer = torch.optim.Adagrad([
+#         {'params': model.bottom_model.embeddings.parameters(), 'lr':scaled_lrs[0]}]
+#     )
 #     mlp_optimizer = sparseAdaLARS([
 #         {'params': model.bottom_model.mlp.parameters(), 'lr': scaled_lrs[0]},
 #         {'params': model.top_model.parameters(), 'lr': scaled_lrs[1]}]

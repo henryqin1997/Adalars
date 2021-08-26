@@ -59,7 +59,7 @@ class TorchMlp(AbstractMlp):
         layers = []
         for output_dims in sizes:
             layers.append(nn.Linear(input_dim, output_dims))
-#             layers.append(nn.BatchNorm1d(output_dims))
+            layers.append(nn.BatchNorm1d(output_dims))
             layers.append(nn.ReLU(inplace=True))
             input_dim = output_dims
 

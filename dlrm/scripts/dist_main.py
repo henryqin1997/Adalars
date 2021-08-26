@@ -37,13 +37,13 @@ from dlrm.utils.distributed import get_gpu_batch_sizes, get_device_mapping, is_m
 from dlrm.optimizer.adalars import sparseAdaLARS
 
 # Training schedule flags
-FLAGS.set_default("batch_size", 1048576) 
-FLAGS.set_default("test_batch_size", 1048576)
+FLAGS.set_default("batch_size", 2097152) 
+FLAGS.set_default("test_batch_size", 262144)
 FLAGS.set_default("lr", 185.0) 
 FLAGS.set_default("warmup_factor", 0)
-FLAGS.set_default("warmup_steps", 2000)
-FLAGS.set_default("decay_steps", 2000)
-FLAGS.set_default("decay_start_step", 2000)
+FLAGS.set_default("warmup_steps", 1000)
+FLAGS.set_default("decay_steps", 1000)
+FLAGS.set_default("decay_start_step", 1000)
 FLAGS.set_default("decay_power", 2)
 FLAGS.set_default("decay_end_lr", 0)
 FLAGS.set_default("embedding_type", "joint_sparse")

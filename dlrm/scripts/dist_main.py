@@ -39,7 +39,7 @@ from dlrm.optimizer.adalars import sparseAdaLARS
 # Training schedule flags
 FLAGS.set_default("batch_size", 2097152) 
 FLAGS.set_default("test_batch_size", 262144)
-FLAGS.set_default("lr", 190.0) 
+FLAGS.set_default("lr", 195.0) 
 FLAGS.set_default("warmup_factor", 0)
 FLAGS.set_default("warmup_steps", 1000)
 FLAGS.set_default("decay_steps", 1000)

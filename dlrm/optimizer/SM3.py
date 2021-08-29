@@ -67,13 +67,8 @@ class SM3(Optimizer):
                 if grad.is_sparse:
                     # the update is non-linear so indices must be unique
                     grad.coalesce()
-                    print(grad)
-                    print(grad.to_dense())
                     grad_indices = grad._indices()
                     grad_values = grad._values()
-
-                    print(grad_indices)
-                    print(grad_values)
 
                     # Transform update_values into sparse tensor
                     def make_sparse(values):
@@ -136,10 +131,6 @@ class SM3(Optimizer):
 def _compute_sparse_update(beta, acc, grad_values, grad_indices):
     # In the sparse case, a single accumulator is used.
     update_values = torch.gather(acc, 0, grad_indices[0])
-    print(grad_indices[0])
-    print(grad_indices)
-    print(update_values)
-    print(grad_values)
     if beta > 0.:
         update_values.mul_(beta)
     update_values.addcmul_(grad_values, grad_values, value=1. - beta)

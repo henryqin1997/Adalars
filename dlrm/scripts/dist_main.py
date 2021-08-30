@@ -38,13 +38,13 @@ from dlrm.optimizer.adalars import sparseAdaLARS
 from dlrm.optimizer.SM3 import SM3
 
 # Training schedule flags
-FLAGS.set_default("batch_size", 1048576) 
+FLAGS.set_default("batch_size", 4194304) 
 FLAGS.set_default("test_batch_size", 262144)
-FLAGS.set_default("lr", 185.0) 
+FLAGS.set_default("lr", 195.0) 
 FLAGS.set_default("warmup_factor", 0)
-FLAGS.set_default("warmup_steps", 2000)
-FLAGS.set_default("decay_steps", 2000)
-FLAGS.set_default("decay_start_step", 2000)
+FLAGS.set_default("warmup_steps", 500)
+FLAGS.set_default("decay_steps", 500)
+FLAGS.set_default("decay_start_step", 500)
 FLAGS.set_default("decay_power", 2)
 FLAGS.set_default("decay_end_lr", 0)
 FLAGS.set_default("embedding_type", "joint_sparse")
@@ -125,27 +125,27 @@ def main(argv):
     scaled_lr = FLAGS.lr / FLAGS.loss_scale if FLAGS.amp else FLAGS.lr
     scaled_lrs = [scaled_lr / world_size, scaled_lr]
 
-    base_optimizer = sparseAdaLARS
+#     base_optimizer = sparseAdaLARS
 
-#     embedding_optimizer = sparseAdaLARS([
-#         {'params': model.bottom_model.embeddings.parameters(), 'lr':scaled_lrs[0]}]
-#     )
+    embedding_optimizer = sparseAdaLARS([
+        {'params': model.bottom_model.embeddings.parameters(), 'lr':scaled_lrs[0]}]
+    )
 #     embedding_optimizer = torch.optim.Adagrad([
 #         {'params': model.bottom_model.embeddings.parameters(), 'lr':scaled_lrs[0]}]
 #     )
-    embedding_optimizer = SM3([
-        {'params': model.bottom_model.embeddings.parameters(), 'lr':scaled_lrs[0]}
-    )
-  
-#     mlp_optimizer = sparseAdaLARS([
-#         {'params': model.bottom_model.mlp.parameters(), 'lr': scaled_lrs[0]},
-#         {'params': model.top_model.parameters(), 'lr': scaled_lrs[1]}]
+#     embedding_optimizer = SM3([
+#         {'params': model.bottom_model.embeddings.parameters(), 'lr':scaled_lrs[0]}
 #     )
-    
-    mlp_optimizer = torch.optim.Adagrad([
+  
+    mlp_optimizer = sparseAdaLARS([
         {'params': model.bottom_model.mlp.parameters(), 'lr': scaled_lrs[0]},
         {'params': model.top_model.parameters(), 'lr': scaled_lrs[1]}]
     )
+    
+#     mlp_optimizer = torch.optim.Adagrad([
+#         {'params': model.bottom_model.mlp.parameters(), 'lr': scaled_lrs[0]},
+#         {'params': model.top_model.parameters(), 'lr': scaled_lrs[1]}]
+#     )
 #     mlp_optimizer = SM3([
 #         {'params': model.bottom_model.mlp.parameters(), 'lr': scaled_lrs[0]},
 #         {'params': model.top_model.parameters(), 'lr': scaled_lrs[1]}]

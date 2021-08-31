@@ -38,13 +38,13 @@ from dlrm.optimizer.adalars import sparseAdaLARS
 from dlrm.optimizer.SM3 import SM3
 
 # Training schedule flags
-FLAGS.set_default("batch_size", 4194304) 
+FLAGS.set_default("batch_size", 524288) 
 FLAGS.set_default("test_batch_size", 262144)
-FLAGS.set_default("lr", 195.0) 
+FLAGS.set_default("lr", 180.0) 
 FLAGS.set_default("warmup_factor", 0)
-FLAGS.set_default("warmup_steps", 500)
-FLAGS.set_default("decay_steps", 500)
-FLAGS.set_default("decay_start_step", 500)
+FLAGS.set_default("warmup_steps", 2000)
+FLAGS.set_default("decay_steps", 2000)
+FLAGS.set_default("decay_start_step", 6000)
 FLAGS.set_default("decay_power", 2)
 FLAGS.set_default("decay_end_lr", 0)
 FLAGS.set_default("embedding_type", "joint_sparse")
